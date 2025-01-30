@@ -1,0 +1,57 @@
+
+<div class="operation-area">
+    <label>CRIAR</label>
+    <form [formGroup]="formPost" class="g-form" (ngSubmit)="CreateFarm()">
+        <div class="g-input" style="flex-flow: column;">
+            <label>Nome da fazenda</label>
+            <input formControlName="name" id="input-farm-name" type="text"/>
+        </div>
+        <button class="g-button" type="submit"> cadastrar</button>
+    </form>
+</div>
+
+
+<div>
+    <label>AREA READ ALL FAZENDA</label>
+    <div>
+        <label>get all</label>
+        <button (click)="GetAllFarms()" ></button>
+    </div>
+</div>
+
+<div>
+    <label>AREA READ BY ID</label>
+    <form [formGroup]="formGetById" (ngSubmit)="GetFarmById()">
+        <div>
+            <label>Código da fazenda</label>
+            <input formControlName="id" id="input-farmid" type="number" min="0"/>
+        </div>
+        <button type="submit"> buscar</button>
+    </form>
+</div>
+
+<div>
+    <label>AREA UPDATE FAZENDA</label>
+    <form [formGroup]="formUpdate" (ngSubmit)="UpdateFarm()">
+        <div>
+            <label>Código da fazenda</label>
+            <input formControlName="id" id="input-farmid" type="number" min="0"/>
+        </div>
+        <div>
+            <label>Nome da fazenda</label>
+            <input formControlName="name" id="input-farm-name" type="text"/>
+        </div>
+        <button type="submit"> atualizar</button>
+    </form>
+</div>
+
+<div>
+    <label>AREA DELETE FAZENDA</label>
+    <form [formGroup]="formDelete" (ngSubmit)="DeleteFarm()">
+        <div>
+            <label>Código da fazenda</label>
+            <input formControlName="id" id="input-farmid" type="number" min="0"/>
+        </div>
+        <button type="submit"> deletar</button>
+    </form>
+</div>

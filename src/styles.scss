@@ -1,1 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root{
+    --cor-primaria-animal: #e2af06;
+    --cor-secundaria-animal: #dd7805;
+
+    --cor-primaria-fazenda: #59c403;
+    --cor-secundaria-fazenda: #2c6600;
+
+    --cor-fundo-principal: #d5e2e0;
+    --cor-preto-principal: #020b1d;
+
+    border: solid 1px var(--cor-secundaria-animal);
+
+    div{
+        border: solid 1px var(--cor-secundaria-fazenda);
+        display: flex;
+    }
+
+    display: flex;
+}
+
+.g-form{
+    display:flex;
+    
+    .g-input{
+        
+        input{
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px; 
+            border: solid 1px var(--cor-primaria-animal);
+            border-radius: 4px;
+        }
+    
+        label{
+            padding: 0vw 1vw;
+        }
+    }
+}
+
+.g-button{
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px; 
+    border: solid 1px var(--cor-primaria-animal);
+    border-radius: 4px;
+    background-color: var(--cor-primaria-animal);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.home-page-button{
+    width: 10vw;
+    height: 6vw;
+
+    justify-content: center;
+    align-items: center;
+
+    label{
+        font-size: 1.5vw;
+    }
+}
+
+.operation-area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+

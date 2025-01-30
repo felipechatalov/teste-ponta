@@ -1,0 +1,18 @@
+<div>
+    tela animal
+
+    <div>
+        <label>get all</label>
+        <button (click)="GetAllAnimals()" ></button>
+    </div>
+</div>
+
+<div>
+    <form [formGroup]="formGetAnimalById">
+        <div>
+            <label>get by id</label>
+            <input formControlName="id" type="number" min="0"/>
+            <button (click)="GetAnimalById()" ></button>
+        </div>
+    </form>
+</div>
