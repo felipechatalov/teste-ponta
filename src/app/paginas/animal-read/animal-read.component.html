@@ -7,12 +7,34 @@
     </div>
 </div>
 
-<div>
-    <form [formGroup]="formGetAnimalById">
-        <div>
+<div class="operation-area">
+    <form [formGroup]="formGetAnimalById" class="g-form">
+        <div class="g-input">
             <label>get by id</label>
             <input formControlName="id" type="number" min="0"/>
             <button (click)="GetAnimalById()" ></button>
         </div>
     </form>
+</div>
+
+
+
+<div class="container">
+    <section class="animal-list-section">
+        <h2>Listagem de Animais</h2>
+        <div class="animal-list">
+            <ng-container *ngFor="let card of [].constructor(3)">
+                <div class="animal-card">
+                    <div>
+                        <h3>Animal</h3>
+                    </div>
+                    <div>
+                        <p>Nome: nomeanimal</p>
+                        <p>Tag: #tag123</p>
+                        <p>Fazenda: primeirafazenda</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </section>
 </div>

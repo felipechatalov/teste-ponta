@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FarmApiService {
 
-  BASE_URL = 'http://localhost:5051/api/farm';
+  BASE_URL = 'http://localhost:5051/api/farm/';
 
   constructor(private httpClient: HttpClient) { }
 
