@@ -57,15 +57,16 @@ export class AnimalPageComponent {
   CadastrarAnimal(){
     console.log(this.formPost.value);
 
-    let novoAnimal = {
+    let newAnimal = {
       farmId: this.formPost.value.farmId,
       name: this.formPost.value.name,
       tag: this.formPost.value.tag
     };
 
-    this.animalApiService.post(novoAnimal).subscribe(
+    this.animalApiService.post(newAnimal).subscribe(
       (retorno) => {
         console.log(retorno);
+        this.formPost.reset();
       },
       (error) => {
         console.log(error);
@@ -78,15 +79,16 @@ export class AnimalPageComponent {
       return;
     }
 
-    let novoAnimal = {
+    let newAnimal = {
       farmId: this.formUpdate.value.farmId,
       name: this.formUpdate.value.name,
       tag: this.formUpdate.value.tag
     };
 
-    this.animalApiService.update(this.formUpdate.value.id, novoAnimal).subscribe(
+    this.animalApiService.update(this.formUpdate.value.id, newAnimal).subscribe(
       (retorno) => {
         console.log(retorno);
+        this.formUpdate.reset();
       },
       (error) => {
         console.log(error);
@@ -102,6 +104,7 @@ export class AnimalPageComponent {
     this.animalApiService.delete(this.formDelete.value.id).subscribe(
       (retorno) => {
         console.log(retorno);
+        this.formDelete.reset();
       },
       (error) => {
         console.log(error);
@@ -118,6 +121,7 @@ export class AnimalPageComponent {
 
     this.animalList.push(newAnimal);
     this.animalListLength = this.animalList.length;
+    this.formPostBatch.reset();
   }
 
   PostBatch(){
@@ -130,6 +134,9 @@ export class AnimalPageComponent {
     this.animalApiService.postBatch(animalBatch).subscribe(
       (retorno) => {
         console.log(retorno);
+        this.animalList = [];
+        this.animalListLength = 0;
+        this.formPostBatch.reset();
       },
       (error) => {
         console.log(error);
@@ -155,6 +162,7 @@ export class AnimalPageComponent {
     this.animalApiService.getById(this.formGetAnimalById.value.id).subscribe(
       (retorno) => {
         console.log(retorno);
+        this.formGetAnimalById.reset();
       },
       (error) => {
         console.log(error);

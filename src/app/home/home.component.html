@@ -1,18 +1,24 @@
 
 <main class="content">
 
-
-
-    <div class="row home-page-card-holder">
-        <div class="col align-center">
-            <label>Animal</label>
-            <div class="home-page-card" (click)="GoToAnimalPage()" ></div>
-        </div>
-        <div class="col align-center">
-            <label>Farm</label>
-            <div class="home-page-card" (click)="GoToFarmPage()" ></div>
+    <div class="home-background">
+        <div class="row home-page-card-holder">
+            <div class="col align-center">
+                <label class="animal">Animal</label>
+                <div class="home-page-card" (click)="GoToAnimalPage()" >
+                    <img src="../../assets/cow-in-the-field.jpg" alt="">
+                </div>
+            </div>
+            <div class="col align-center">
+                <label class="farm">Farm</label>
+                <div class="home-page-card" (click)="GoToFarmPage()" >
+                    <img src="../../assets/farm.jpg" alt="">
+                </div>
+            </div>
         </div>
     </div>
+
+
 
 
 

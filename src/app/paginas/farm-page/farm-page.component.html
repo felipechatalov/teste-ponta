@@ -15,27 +15,61 @@
     </div>
 
     <div class="operation-area">
-        <label>GET ALL</label>
-        <div class="g-form">
+        <div class="row">
             <div class="col">
-                <button class="g-button" (click)="GetAllFarms()" >buscar</button>
+                <label>GET ALL</label>
+                <div class="g-form">
+                    <div class="col">
+                        <button class="g-button" (click)="GetAllFarms()" >buscar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container col" *ngIf="farmList.length">
+                    <h2>Listagem de Fazendas</h2>
+                    <div class="animal-list row">
+                        <ng-container *ngFor="let card of [].constructor(3)">
+                            <div class="animal-card">
+                                <div>
+                                    <h3>Nome da Fazenda</h3>
+                                </div>
+                                <div>
+                                    <p>Quantidade de animais: 5</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="operation-area">
-        <label>AREA READ BY ID</label>
-        <form [formGroup]="formGetById" class="g-form" (ngSubmit)="GetFarmById()">
+    <div class="operation-area align-start">
+        <div class="row">
             <div class="col">
-                <div class="g-input">
-                    <label>Código da fazenda</label>
-                    <input formControlName="id" id="input-farmid" type="number" min="0"/>
-                </div>
-                <button class="g-button" type="submit"> buscar</button>
+                <label>AREA READ BY ID</label>
+                <form [formGroup]="formGetById" class="g-form" (ngSubmit)="GetFarmById()">
+                    <div class="col">
+                        <div class="g-input">
+                            <label>Código da fazenda</label>
+                            <input formControlName="id" id="input-farmid" type="number" min="0"/>
+                        </div>
+                        <button class="g-button" type="submit"> buscar</button>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="col justify-center">
+                <div class="animal-card">
+                    <div>
+                        <h3>Nome da Fazenda</h3>
+                    </div>
+                    <div>
+                        <p>Quantidade de animais: 5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 
     <div class="operation-area">
         <label>AREA UPDATE FAZENDA</label>
