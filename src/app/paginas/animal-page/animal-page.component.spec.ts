@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnimalReadComponent } from './animal-read.component';
+import { AnimalPageComponent } from './animal-page.component';
 
-describe('AnimalReadComponent', () => {
-  let component: AnimalReadComponent;
-  let fixture: ComponentFixture<AnimalReadComponent>;
+describe('AnimalPageComponent', () => {
+  let component: AnimalPageComponent;
+  let fixture: ComponentFixture<AnimalPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AnimalReadComponent]
+      imports: [AnimalPageComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AnimalReadComponent);
+    fixture = TestBed.createComponent(AnimalPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

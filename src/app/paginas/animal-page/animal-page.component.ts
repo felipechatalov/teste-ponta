@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalApiService } from '../../servicos/animal-api.service';
+import { NgFor } from '@angular/common';
+
 
 @Component({
-  selector: 'app-animal-post',
-  imports: [FormsModule, ReactiveFormsModule],
-  templateUrl: './animal-post.component.html',
-  styleUrl: './animal-post.component.scss'
+  selector: 'app-animalpage',
+  imports: [FormsModule, ReactiveFormsModule, NgFor],
+  templateUrl: './animal-page.component.html',
+  styleUrl: './animal-page.component.scss'
 })
-export class AnimalPostComponent {
-  
+export class AnimalPageComponent {
   inputAnimal = {
     name: '',
     tag: '',
@@ -40,9 +42,19 @@ export class AnimalPostComponent {
     farmId: new FormControl(''),
   });
 
+  formGetAnimalById = new FormGroup({
+    id: new FormControl(''),
+  });
+
+
   public animalListLength = 0;
 
-  constructor(private animalApiService: AnimalApiService) { }
+  constructor(private router: Router,
+              private animalApiService: AnimalApiService){}
+
+  GoToHomePage(){
+    this.router.navigate(['/']);
+  }
 
   CadastrarAnimal(){
     console.log(this.formPost.value);
@@ -126,5 +138,28 @@ export class AnimalPostComponent {
       });
   }
 
-}
+  GetAllAnimals(){
+    this.animalApiService.getAll().subscribe(
+      (retorno) => {
+        console.log(retorno);
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
 
+  GetAnimalById(){
+
+    if (this.formGetAnimalById.value.id == null){
+      return;
+    }
+
+    this.animalApiService.getById(this.formGetAnimalById.value.id).subscribe(
+      (retorno) => {
+        console.log(retorno);
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
+}
