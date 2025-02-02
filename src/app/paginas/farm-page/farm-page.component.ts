@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FarmApiService } from '../../../servicos/farm-api.service';
+import { FarmApiService } from '../../servicos/farm-api.service';
+import { HomePageButtonComponent } from '../../components/home-page-button/home-page-button.component';
 
 @Component({
   selector: 'app-farm-page',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, HomePageButtonComponent],
   templateUrl: './farm-page.component.html',
   styleUrl: './farm-page.component.scss'
 })
@@ -32,12 +33,7 @@ export class FarmPageComponent {
     id: new FormControl(''),
   });
 
-  constructor(private router: Router,
-              private farmApiService: FarmApiService){}
-
-  GoToHomePage(){
-    this.router.navigate(['/']);
-  }
+  constructor(private farmApiService: FarmApiService){}
 
   CreateFarm(){
     console.log(this.formPost.value);

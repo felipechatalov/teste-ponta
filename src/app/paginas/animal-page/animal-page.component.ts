@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalApiService } from '../../servicos/animal-api.service';
 import { NgFor } from '@angular/common';
+import { HomePageButtonComponent } from '../../components/home-page-button/home-page-button.component';
 
 
 @Component({
   selector: 'app-animalpage',
-  imports: [FormsModule, ReactiveFormsModule, NgFor],
+  imports: [FormsModule, ReactiveFormsModule, NgFor, HomePageButtonComponent],
   templateUrl: './animal-page.component.html',
   styleUrl: './animal-page.component.scss'
 })
@@ -49,12 +50,9 @@ export class AnimalPageComponent {
 
   public animalListLength = 0;
 
-  constructor(private router: Router,
-              private animalApiService: AnimalApiService){}
+  constructor(private animalApiService: AnimalApiService){}
 
-  GoToHomePage(){
-    this.router.navigate(['/']);
-  }
+
 
   CadastrarAnimal(){
     console.log(this.formPost.value);
