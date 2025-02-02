@@ -2,10 +2,10 @@
     <label (click)="GoToHomePage()" >home</label>
 </div>
 
-<div>
+<div class="col">
     <div class="operation-area">
         <form [formGroup]="formPost" class="g-form" (ngSubmit)="CadastrarAnimal()">
-            <div style="flex-flow: column;">
+            <div class="col">
                 <div class="g-input">
                     <label>Código da fazenda</label>
                     <input formControlName="farmId" id="input-farmid" type="number" min="0"/>
@@ -20,8 +20,8 @@
                     <label>Tag do animal</label>
                     <input formControlName="tag" id="input-animaltag" type="text"/>
                 </div>
+                <button ype="submit" class="g-button"> cadastrar</button>
             </div>
-            <button type="submit" class="g-button"> cadastrar</button>
         </form>
     </div>
 
@@ -48,26 +48,28 @@
                     <label>Tag do animal</label>
                     <input formControlName="tag" type="text"/>
                 </div>
+                <button type="submit" class="g-button"> atualizar</button>
             </div>
-            <button type="submit" class="g-button"> atualizar</button>
         </form>
     </div>
 
     <div class="operation-area"> 
         <label>Delete animal</label>
         <form [formGroup]="formDelete" class="g-form" (ngSubmit)="DeleteAnimal()">
-            <div class="g-input">
-                <label>Id do animal</label>
-                <input formControlName="id" type="number" min="0"/>
-            </div>
-            <button type="submit" class="g-button"> deletar</button>
+            <div class="col">
+                <div class="g-input">
+                    <label>Id do animal</label>
+                    <input formControlName="id" type="number" min="0"/>
+                </div>
+                <button type="submit" class="g-button"> deletar</button>
+            </div> 
         </form>
     </div>
 
     <div class="operation-area">
         <label>Post Batch</label>
         <form [formGroup]="formPostBatch" class="g-form" (ngSubmit)="AddToBatch()">
-            <div style="flex-flow: column;">
+            <div class="col">
                 <div class="g-input">
                     <label>Código da fazenda</label>
                     <input formControlName="farmId" type="number" min="0"/>
@@ -82,9 +84,9 @@
                     <label>Tag do animal</label>
                     <input formControlName="tag" type="text"/>
                 </div>
+                <button type="submit" class="g-button"> cadastrar</button>
             </div>
 
-            <button type="submit" class="g-button"> cadastrar</button>
         </form>
         <span> animalListLength = {{ animalListLength }} </span>
         <div (click)="PostBatch()" > clique aq para cadastrar</div>

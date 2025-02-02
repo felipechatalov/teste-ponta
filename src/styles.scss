@@ -29,6 +29,7 @@
     .g-input{
         display: flex;
         flex-direction: column;
+        padding: 4px 16px;
         input{
             width: 100%;
             padding: 8px;
@@ -43,16 +44,15 @@
     
         label{
             padding: 0vw 1vw;
+
         }
     }
 }
 
 .g-button{
-    width: 30%;
-    margin-left:64px;
-    margin-top: 16px;
+    width: 100%;
+    margin: 16px 8px;
     padding: 8px;
-    margin-bottom: 12px; 
     border: solid 1px var(--cor-primaria-animal);
     border-radius: 4px;
     background-color: var(--cor-primaria-animal);
