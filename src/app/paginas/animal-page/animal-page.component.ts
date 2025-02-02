@@ -2,18 +2,18 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalApiService } from '../../servicos/animal-api.service';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { HomePageButtonComponent } from '../../components/home-page-button/home-page-button.component';
 
 
 @Component({
   selector: 'app-animalpage',
-  imports: [FormsModule, ReactiveFormsModule, NgFor, HomePageButtonComponent],
+  imports: [FormsModule, ReactiveFormsModule, NgFor, HomePageButtonComponent, NgIf],
   templateUrl: './animal-page.component.html',
   styleUrl: './animal-page.component.scss'
 })
 export class AnimalPageComponent {
-  inputAnimal = {
+  animalObj = {
     name: '',
     tag: '',
     farmId: '',
@@ -36,7 +36,6 @@ export class AnimalPageComponent {
     id: new FormControl(''),
   });
 
-  private animalList: any[] = [];
   formPostBatch = new FormGroup({
     name: new FormControl(''),
     tag: new FormControl(''),
@@ -48,7 +47,15 @@ export class AnimalPageComponent {
   });
 
 
-  public animalListLength = 0;
+  public animalBatchListLength = 0;
+  public animalBatchList: any[] = [];
+  public animalList: any[] = [];
+
+  public showAnimal = {
+    name: '',
+    tag: '',
+    farmId: '',
+  }
 
   constructor(private animalApiService: AnimalApiService){}
 
@@ -119,23 +126,23 @@ export class AnimalPageComponent {
       tag: this.formPostBatch.value.tag
     };
 
-    this.animalList.push(newAnimal);
-    this.animalListLength = this.animalList.length;
+    this.animalBatchList.push(newAnimal);
+    this.animalBatchListLength = this.animalBatchList.length;
     this.formPostBatch.reset();
   }
 
   PostBatch(){
       
     let animalBatch = {
-      animals: this.animalList,
+      animals: this.animalBatchList,
       farmId: this.formPostBatch.value.farmId
     };
 
     this.animalApiService.postBatch(animalBatch).subscribe(
       (retorno) => {
         console.log(retorno);
-        this.animalList = [];
-        this.animalListLength = 0;
+        this.animalBatchList = [];
+        this.animalBatchListLength = 0;
         this.formPostBatch.reset();
       },
       (error) => {
@@ -147,6 +154,7 @@ export class AnimalPageComponent {
     this.animalApiService.getAll().subscribe(
       (retorno) => {
         console.log(retorno);
+        this.animalList = retorno;
       },
       (error) => {
         console.log(error);
@@ -162,10 +170,16 @@ export class AnimalPageComponent {
     this.animalApiService.getById(this.formGetAnimalById.value.id).subscribe(
       (retorno) => {
         console.log(retorno);
+        this.showAnimal = retorno;
         this.formGetAnimalById.reset();
       },
       (error) => {
         console.log(error);
+        this.showAnimal = {
+          name: '',
+          tag: '',
+          farmId: '',
+        };
       });
   }
 }

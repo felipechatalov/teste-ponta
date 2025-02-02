@@ -1,125 +1,179 @@
-<home-page-button></home-page-button>
 
-<div class="col">
-    <div class="operation-area">
-        <form [formGroup]="formPost" class="g-form" (ngSubmit)="CadastrarAnimal()">
-            <div class="col">
-                <div class="g-input">
-                    <label>Código da fazenda</label>
-                    <input formControlName="farmId" id="input-farmid" type="number" min="0"/>
-                </div>
-                
-                <div class="g-input">
-                    <label>Nome do animal</label>
-                    <input formControlName="name" id="input-animalname" type="text"/>
-                </div>
-                
-                <div class="g-input">
-                    <label>Tag do animal</label>
-                    <input formControlName="tag" id="input-animaltag" type="text"/>
-                </div>
-                <button ype="submit" class="g-button"> cadastrar</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="operation-area">
-        <label>Update animal</label>
-        <form [formGroup]="formUpdate" class="g-form" (ngSubmit)="UpdateAnimal()">
-            <div style="flex-flow: column;">
-                <div class="g-input">
-                    <label>Id do animal</label>
-                    <input formControlName="id" type="number" min="0"/>
-                </div>
-        
-                <div class="g-input">
-                    <label>Código da fazenda</label>
-                    <input formControlName="farmId" type="number" min="0"/>
-                </div>
-        
-                <div class="g-input">
-                    <label>Nome do animal</label>
-                    <input formControlName="name" type="text"/>
-                </div>
-                
-                <div class="g-input">
-                    <label>Tag do animal</label>
-                    <input formControlName="tag" type="text"/>
-                </div>
-                <button type="submit" class="g-button"> atualizar</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="operation-area"> 
-        <label>Delete animal</label>
-        <form [formGroup]="formDelete" class="g-form" (ngSubmit)="DeleteAnimal()">
-            <div class="col">
-                <div class="g-input">
-                    <label>Id do animal</label>
-                    <input formControlName="id" type="number" min="0"/>
-                </div>
-                <button type="submit" class="g-button"> deletar</button>
-            </div> 
-        </form>
-    </div>
-
-    <div class="operation-area">
-        <label>Post Batch</label>
-        <form [formGroup]="formPostBatch" class="g-form" (ngSubmit)="AddToBatch()">
-            <div class="col">
-                <div class="g-input">
-                    <label>Código da fazenda</label>
-                    <input formControlName="farmId" type="number" min="0"/>
-                </div>
-                
-                <div class="g-input">
-                    <label>Nome do animal</label>
-                    <input formControlName="name" type="text"/>
-                </div>
-                
-                <div class="g-input">
-                    <label>Tag do animal</label>
-                    <input formControlName="tag" type="text"/>
-                </div>
-                <button type="submit" class="g-button"> cadastrar</button>
-            </div>
-
-        </form>
-        <span> animalListLength = {{ animalListLength }} </span>
-        <div (click)="PostBatch()" > clique aq para cadastrar</div>
-
-    </div>
-</div>
-
-<div>
-    <div class="operation-area">
-        <form [formGroup]="formGetAnimalById" class="g-form">
-            <div class="g-input">
-                <label>get by id</label>
-                <input formControlName="id" type="number" min="0"/>
-                <button (click)="GetAnimalById()" ></button>
-            </div>
-        </form>
-    </div>
+<div class="page-background col">
     
-    <div class="container">
-        <section class="animal-list-section">
-            <h2>Listagem de Animais</h2>
-            <div class="animal-list">
-                <ng-container *ngFor="let card of [].constructor(3)">
-                    <div class="animal-card">
-                        <div>
-                            <h3>Animal</h3>
-                        </div>
-                        <div>
-                            <p>Nome: nomeanimal</p>
-                            <p>Tag: #tag123</p>
-                            <p>Fazenda: primeirafazenda</p>
-                        </div>
-                    </div>
-                </ng-container>
+    <header class="page-header">
+        <div class="row">
+            <div class="header-home-button">
+                <home-page-button></home-page-button>
             </div>
-        </section>
+            <div class="header-title justify-center">
+                <h1>Animal Operations Page</h1>
+            </div>
+            <div class="header-trademark justify-center">
+                <h2>PontaAgro</h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="working-area col">
+        <div class="col">
+            <div class="operation-area">
+                <h3>Cadastrar novo animal</h3>
+                <form [formGroup]="formPost" class="g-form" (ngSubmit)="CadastrarAnimal()">
+                    <div class="col input-area">
+                        <div class="g-input">
+                            <label>Código da fazenda</label>
+                            <input formControlName="farmId" id="input-farmid" type="number" min="0"/>
+                        </div>
+                        
+                        <div class="g-input">
+                            <label>Nome do animal</label>
+                            <input formControlName="name" id="input-animalname" type="text"/>
+                        </div>
+                        
+                        <div class="g-input">
+                            <label>Tag do animal</label>
+                            <input formControlName="tag" id="input-animaltag" type="text"/>
+                        </div>
+                        <button ype="submit" class="g-button"> cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="operation-area">
+                <h3>Update animal</h3>
+                <form [formGroup]="formUpdate" class="g-form" (ngSubmit)="UpdateAnimal()">
+                    <div style="flex-flow: column;">
+                        <div class="g-input">
+                            <label>Id do animal</label>
+                            <input formControlName="id" type="number" min="0"/>
+                        </div>
+                
+                        <div class="g-input">
+                            <label>Código da fazenda</label>
+                            <input formControlName="farmId" type="number" min="0"/>
+                        </div>
+                
+                        <div class="g-input">
+                            <label>Nome do animal</label>
+                            <input formControlName="name" type="text"/>
+                        </div>
+                        
+                        <div class="g-input">
+                            <label>Tag do animal</label>
+                            <input formControlName="tag" type="text"/>
+                        </div>
+                        <button type="submit" class="g-button"> atualizar</button>
+                    </div>
+                </form>
+            </div>
+        
+            <div class="operation-area"> 
+                <h3>Delete animal</h3>
+                <form [formGroup]="formDelete" class="g-form" (ngSubmit)="DeleteAnimal()">
+                    <div class="col">
+                        <div class="g-input">
+                            <label>Id do animal</label>
+                            <input formControlName="id" type="number" min="0"/>
+                        </div>
+                        <button type="submit" class="g-button"> deletar</button>
+                    </div> 
+                </form>
+            </div>
+        
+            <div class="operation-area">
+                <h3>Post Batch</h3>
+                <form [formGroup]="formPostBatch" class="g-form" (ngSubmit)="AddToBatch()">
+                    <div class="col">
+                        <div class="g-input">
+                            <label>Código da fazenda</label>
+                            <input formControlName="farmId" type="number" min="0"/>
+                        </div>
+                        
+                        <div class="g-input">
+                            <label>Nome do animal</label>
+                            <input formControlName="name" type="text"/>
+                        </div>
+                        
+                        <div class="g-input">
+                            <label>Tag do animal</label>
+                            <input formControlName="tag" type="text"/>
+                        </div>
+                        <button type="submit" class="g-button"> Adicionar a lista</button>
+                        
+                        <span> Animais para cadastrar = {{ animalBatchListLength }} </span>
+                        <button (click)="PostBatch()" class="g-button"> Cadastrar</button>
+                    </div>
+        
+                </form>
+        
+            </div>
+    
+            <div class="operation-area">
+                <h3>Procurar por ID</h3>
+                <form [formGroup]="formGetAnimalById" class="g-form">
+                    <div class="col">
+                        <div class="g-input">
+                            <label>get by id</label>
+                            <input formControlName="id" type="number" min="0"/>
+                        </div>
+                        <button (click)="GetAnimalById()" class="g-button" >Procurar</button>
+                    </div>
+                    <div class="justify-center align-center" style="flex-grow: 1;">
+                        <ng-container *ngIf="showAnimal.farmId == ''">
+                            <p>Nenhum animal encontrado</p>
+                        </ng-container>
+                        <ng-container *ngIf="showAnimal.farmId != ''">
+                            <div class="animal-card">
+                                <div>
+                                    <h3>{{ showAnimal.name }}</h3>
+                                </div>
+                                <div class="card-info">
+                                    <p>Tag: {{ showAnimal.tag }}</p>
+                                    <p>Fazenda: {{ showAnimal.farmId }}</p>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    
+        <div>
+            
+            <!-- <div class="operation-area"> 
+                <label>Get all</label>
+                
+            </div> -->
+        
+            <div class="container">
+                <section class="animal-list-section">
+                    <div class="col align-center">
+                        <h2>Listagem de Animais</h2>
+                        <button class="g-button" (click)="GetAllAnimals()"> get all</button>
+                    </div>
+                    <div class="animal-list">
+                        <ng-container *ngIf="animalList.length == 0">
+                            <p>Nenhum animal cadastrado</p>
+                        </ng-container>
+                        <ng-container *ngIf="animalList.length != 0">
+                            <ng-container *ngFor="let animal of animalList">
+                                <div class="animal-card">
+                                    <div>
+                                        <h3>{{ animal.name }}</h3>
+                                    </div>
+                                    <div class="card-info">
+                                        <!-- <p>Nome: nomeanimal</p> -->
+                                        <p>Tag: {{ animal.tag }}</p>
+                                        <p>Fazenda: {{ animal.farmId }}</p>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </section>
+            </div>
+        </div>
     </div>
 </div>
