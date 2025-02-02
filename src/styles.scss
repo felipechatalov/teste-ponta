@@ -137,3 +137,45 @@
 .animal-card p span {
     font-weight: bold;
 }
+
+
+
+.content{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    flex-flow: column;
+}
+
+.home-page-card-holder{
+    border: solid 1px black; 
+    display: flex; 
+    gap: 2vw;
+    position: absolute;
+    translate: -50% -50%;
+    left: 50%;
+    top: 50%;
+}
+
+.home-page-card{
+    width: 300px; 
+    height: 300px;
+    border: solid 1px aqua; 
+    border-radius: 8%;
+}
+
+.col{
+    flex-flow: column;
+}
+
+.row{
+    flex-flow: row;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}

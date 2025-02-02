@@ -1,17 +1,20 @@
 
-<main>
-    <header>
-        header
-    </header>
+<main class="content">
 
-    <div>
-        <div id="animal-card" (click)="GoToAnimalPage()" style="background-color: aqua;"> animal </div>
 
-        <div id="farm-card" (click)="GoToFarmPage()" style="background-color: saddlebrown;"> farm </div>
+
+    <div class="row home-page-card-holder">
+        <div class="col align-center">
+            <label>Animal</label>
+            <div class="home-page-card" (click)="GoToAnimalPage()" ></div>
+        </div>
+        <div class="col align-center">
+            <label>Farm</label>
+            <div class="home-page-card" (click)="GoToFarmPage()" ></div>
+        </div>
     </div>
 
-    <footer>
-        footer
-    </footer>
+
+
 
 </main>
