@@ -1,103 +1,123 @@
-<home-page-button></home-page-button>
 
-<div class="col">
-    <div class="operation-area">
-        <label>CRIAR</label>
-        <form [formGroup]="formPost" class="g-form" (ngSubmit)="CreateFarm()">
-            <div class="col">
-                <div class="g-input">
-                    <label>Nome da fazenda</label>
-                    <input formControlName="name" id="input-farm-name" type="text"/>
-                </div>
-                <button class="g-button" type="submit"> cadastrar</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="operation-area">
+<div class="page-background farm col">
+    
+    <header class="page-header">
         <div class="row">
-            <div class="col">
-                <label>GET ALL</label>
-                <div class="g-form">
-                    <div class="col">
-                        <button class="g-button" (click)="GetAllFarms()" >buscar</button>
-                    </div>
-                </div>
+            <div class="header-home-button">
+                <home-page-button></home-page-button>
             </div>
-            <div class="col">
-                <div class="container col" *ngIf="farmList.length">
-                    <h2>Listagem de Fazendas</h2>
-                    <div class="animal-list row">
-                        <ng-container *ngFor="let card of [].constructor(3)">
-                            <div class="animal-card">
+            <div class="header-title justify-center">
+                <h1>Farm Operations Page</h1>
+            </div>
+            <div class="header-trademark justify-center">
+                <h2>PontaAgro</h2>
+            </div>
+        </div>
+    </header>
+
+    <div class="working-area col">
+        <div class="col">
+            <!-- create -->
+            <div class="operation-area">
+                <h3>CADASTRAR</h3>
+                <form [formGroup]="formPost" class="g-form" (ngSubmit)="CreateFarm()">
+                    <div class="col input-area">
+                        <div class="g-input">
+                            <label>Nome da fazenda</label>
+                            <input formControlName="name" id="input-farm-name" type="text"/>
+                        </div>
+                        <button class="g-button" type="submit">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+
+            
+            <!-- read by id -->
+            <div class="operation-area">
+                <h3>PROCURAR POR ID</h3>
+                <form [formGroup]="formGetById" class="g-form" style="min-height: 10vw;">
+                    <div class="col">
+                        <div class="g-input">
+                            <label>get by id</label>
+                            <input formControlName="id" type="number" min="0"/>
+                        </div>
+                        <button (click)="GetFarmById()" class="g-button" >Procurar</button>
+                    </div>
+                    <div class="align-center justify-center" style="flex-grow: 1;">
+                        <ng-container *ngIf="showFarm.name != ''">
+                            <div class="list-card">
                                 <div>
-                                    <h3>Nome da Fazenda</h3>
+                                    <h3>{{ showFarm.name }}</h3>
                                 </div>
-                                <div>
-                                    <p>Quantidade de animais: 5</p>
+                                <div class="card-info">
+                                    <p>Quantidade de animais: {{ showFarm.animals.length }}</p>
+                                    <!-- <p>Fazenda: {{ showAnimal.farmId }}</p> -->
                                 </div>
                             </div>
                         </ng-container>
                     </div>
-                </div>
+                </form>
             </div>
-        </div>
-    </div>
 
-    <div class="operation-area align-start">
-        <div class="row">
-            <div class="col">
-                <label>AREA READ BY ID</label>
-                <form [formGroup]="formGetById" class="g-form" (ngSubmit)="GetFarmById()">
+            <!-- update -->
+            <div class="operation-area">
+                <h3>ATUALIZAR FAZENDA</h3>
+                <form [formGroup]="formUpdate" class="g-form" (ngSubmit)="UpdateFarm()">
                     <div class="col">
                         <div class="g-input">
                             <label>Código da fazenda</label>
                             <input formControlName="id" id="input-farmid" type="number" min="0"/>
                         </div>
-                        <button class="g-button" type="submit"> buscar</button>
+                        <div class="g-input">
+                            <label>Nome da fazenda</label>
+                            <input formControlName="name" id="input-farm-name" type="text"/>
+                        </div>
+                        <button class="g-button"  type="submit">Atualizar</button>
                     </div>
                 </form>
             </div>
-            <div class="col justify-center">
-                <div class="animal-card">
-                    <div>
-                        <h3>Nome da Fazenda</h3>
+
+            <!-- delete -->
+            <div class="operation-area">
+                <h3>ÁREA EXCLUIR</h3>
+                <form [formGroup]="formDelete" class="g-form" (ngSubmit)="DeleteFarm()">
+                    <div class="col">
+                        <div class="g-input">
+                            <label>Código da fazenda</label>
+                            <input formControlName="id" id="input-farmid" type="number" min="0"/>
+                        </div>
+                        <button class="g-button" type="submit">Excluir</button>
                     </div>
-                    <div>
-                        <p>Quantidade de animais: 5</p>
-                    </div>
+                </form>
+            </div>
+
+            <!-- get all -->
+            <div class="operation-area">
+                <div>
+                    <section class="list-section">
+                        <div class="col align-center">
+                            <h2>Listagem de Fazendas</h2>
+                            <button style="width: 30%;" class="g-button" (click)="GetAllFarms()">Procurar</button>
+                        </div>
+                        <div class="list">
+                            <ng-container *ngIf="farmList.length != 0">
+                                <ng-container *ngFor="let farm of farmList">
+                                    <div class="list-card">
+                                        <div>
+                                            <h3>{{ farm.name }}</h3>
+                                        </div>
+                                        <div class="card-info">
+                                            <!-- <p>Nome: nomeanimal</p> -->
+                                            <p>Animais: {{ farm.animals.length }}</p>
+                                            <!-- <p>Fazenda: {{ farm.farmId }}</p> -->
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </ng-container>
+                        </div>
+                    </section>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="operation-area">
-        <label>AREA UPDATE FAZENDA</label>
-        <form [formGroup]="formUpdate" class="g-form" (ngSubmit)="UpdateFarm()">
-            <div class="col">
-                <div class="g-input">
-                    <label>Código da fazenda</label>
-                    <input formControlName="id" id="input-farmid" type="number" min="0"/>
-                </div>
-                <div class="g-input">
-                    <label>Nome da fazenda</label>
-                    <input formControlName="name" id="input-farm-name" type="text"/>
-                </div>
-                <button class="g-button"  type="submit"> atualizar</button>
-            </div>
-        </form>
-    </div>
-
-    <div class="operation-area">
-    <label>AREA DELETE FAZENDA</label>
-    <form [formGroup]="formDelete" class="g-form" (ngSubmit)="DeleteFarm()">
-        <div class="col">
-            <div class="g-input">
-                <label>Código da fazenda</label>
-                <input formControlName="id" id="input-farmid" type="number" min="0"/>
-            </div>
-            <button class="g-button" type="submit"> deletar</button>
-        </div>
-    </form>
     </div>
 </div>

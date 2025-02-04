@@ -62,7 +62,12 @@ export class AnimalPageComponent {
 
 
   CadastrarAnimal(){
-    console.log(this.formPost.value);
+    if (this.formPost.value.name == '' || this.formPost.value.name == null
+      || this.formPost.value.tag == '' || this.formPost.value.tag == null
+      || this.formPost.value.farmId == '' || this.formPost.value.farmId == null) {
+      alert('Nome ou tag ou id não pode ser vazio');
+      return;
+    }
 
     let newAnimal = {
       farmId: this.formPost.value.farmId,
@@ -72,17 +77,20 @@ export class AnimalPageComponent {
 
     this.animalApiService.post(newAnimal).subscribe(
       (retorno) => {
-        console.log(retorno);
+        alert('Animal cadastrado com sucesso');
         this.formPost.reset();
       },
       (error) => {
-        console.log(error);
+        alert('Erro ao cadastrar animal');
       });
   }
 
   UpdateAnimal(){
 
-    if (this.formUpdate.value.id == null){
+    if (this.formUpdate.value.id == null || this.formUpdate.value.id == ''
+      || this.formUpdate.value.name == null || this.formUpdate.value.name == ''
+      || this.formUpdate.value.tag == null || this.formUpdate.value.tag == ''){
+      alert('Nome ou tag ou id não pode ser vazio');
       return;
     }
 
@@ -94,33 +102,38 @@ export class AnimalPageComponent {
 
     this.animalApiService.update(this.formUpdate.value.id, newAnimal).subscribe(
       (retorno) => {
-        console.log(retorno);
+        alert('Animal atualizado com sucesso');
         this.formUpdate.reset();
       },
       (error) => {
-        console.log(error);
+        alert('Erro ao atualizar animal');
       });
   }
 
   DeleteAnimal(){
 
     if (this.formDelete.value.id == null){
+      alert('Id não pode ser vazio');
       return;
     }
 
     this.animalApiService.delete(this.formDelete.value.id).subscribe(
       (retorno) => {
-        console.log(retorno);
+        alert('Animal deletado com sucesso');
         this.formDelete.reset();
       },
       (error) => {
-        console.log(error);
+        alert('Erro ao deletar animal');
       });
   }
 
 
   AddToBatch(){
-
+    if (this.formPostBatch.value.name == '' || this.formPostBatch.value.name == null
+      || this.formPostBatch.value.tag == '' || this.formPostBatch.value.tag == null) {
+      alert('Nome ou tag não pode ser vazio');
+      return;
+    }
     let newAnimal = {
       name: this.formPostBatch.value.name,
       tag: this.formPostBatch.value.tag
@@ -133,6 +146,11 @@ export class AnimalPageComponent {
 
   PostBatch(){
       
+    if (this.formPostBatch.value.farmId == ''){
+      alert('Id da fazenda não pode ser vazio');
+      return;
+    }
+
     let animalBatch = {
       animals: this.animalBatchList,
       farmId: this.formPostBatch.value.farmId
@@ -140,41 +158,39 @@ export class AnimalPageComponent {
 
     this.animalApiService.postBatch(animalBatch).subscribe(
       (retorno) => {
-        console.log(retorno);
         this.animalBatchList = [];
         this.animalBatchListLength = 0;
         this.formPostBatch.reset();
       },
       (error) => {
-        console.log(error);
+        alert('Erro ao cadastrar animal')
       });
   }
 
   GetAllAnimals(){
     this.animalApiService.getAll().subscribe(
       (retorno) => {
-        console.log(retorno);
         this.animalList = retorno;
       },
       (error) => {
-        console.log(error);
+        alert('Erro ao buscar animais');        
       });
   }
 
   GetAnimalById(){
 
-    if (this.formGetAnimalById.value.id == null){
+    if (this.formGetAnimalById.value.id == null || this.formGetAnimalById.value.id == ''){
+      alert('Id não pode ser vazio');
       return;
     }
 
     this.animalApiService.getById(this.formGetAnimalById.value.id).subscribe(
       (retorno) => {
-        console.log(retorno);
         this.showAnimal = retorno;
         this.formGetAnimalById.reset();
       },
       (error) => {
-        console.log(error);
+        alert('Erro ao buscar animal');
         this.showAnimal = {
           name: '',
           tag: '',

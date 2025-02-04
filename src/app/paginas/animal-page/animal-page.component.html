@@ -99,19 +99,18 @@
                             <label>Tag do animal</label>
                             <input formControlName="tag" type="text"/>
                         </div>
-                        <button type="submit" class="g-button"> Adicionar a lista</button>
-                        
-                        <span> Animais para cadastrar = {{ animalBatchListLength }} </span>
-                        <button (click)="PostBatch()" class="g-button"> Cadastrar</button>
+                        <button class="g-button"> Adicionar a lista</button>
+                        <span> Animais na lista = {{ animalBatchListLength }} </span>
+                        <button type="button" (click)="PostBatch()" class="g-button"> Cadastrar</button>
                     </div>
-        
+                    
                 </form>
         
             </div>
     
             <div class="operation-area">
                 <h3>Procurar por ID</h3>
-                <form [formGroup]="formGetAnimalById" class="g-form">
+                <form [formGroup]="formGetAnimalById" class="g-form" style="min-height: 10vw;">
                     <div class="col">
                         <div class="g-input">
                             <label>get by id</label>
@@ -124,7 +123,7 @@
                             <p>Nenhum animal encontrado</p>
                         </ng-container>
                         <ng-container *ngIf="showAnimal.farmId != ''">
-                            <div class="animal-card">
+                            <div class="list-card">
                                 <div>
                                     <h3>{{ showAnimal.name }}</h3>
                                 </div>
@@ -141,39 +140,31 @@
         
     
         <div>
-            
-            <!-- <div class="operation-area"> 
-                <label>Get all</label>
-                
-            </div> -->
-        
-            <div class="container">
-                <section class="animal-list-section">
-                    <div class="col align-center">
-                        <h2>Listagem de Animais</h2>
-                        <button class="g-button" (click)="GetAllAnimals()"> get all</button>
-                    </div>
-                    <div class="animal-list">
-                        <ng-container *ngIf="animalList.length == 0">
-                            <p>Nenhum animal cadastrado</p>
-                        </ng-container>
-                        <ng-container *ngIf="animalList.length != 0">
-                            <ng-container *ngFor="let animal of animalList">
-                                <div class="animal-card">
-                                    <div>
-                                        <h3>{{ animal.name }}</h3>
-                                    </div>
-                                    <div class="card-info">
-                                        <!-- <p>Nome: nomeanimal</p> -->
-                                        <p>Tag: {{ animal.tag }}</p>
-                                        <p>Fazenda: {{ animal.farmId }}</p>
-                                    </div>
+            <section class="list-section">
+                <div class="col align-center">
+                    <h2>Listagem de Animais</h2>
+                    <button style="width: 30%;" class="g-button" (click)="GetAllAnimals()"> get all</button>
+                </div>
+                <div class="list">
+                    <ng-container *ngIf="animalList.length == 0">
+                        <p>Nenhum animal cadastrado</p>
+                    </ng-container>
+                    <ng-container *ngIf="animalList.length != 0">
+                        <ng-container *ngFor="let animal of animalList">
+                            <div class="list-card">
+                                <div>
+                                    <h3>{{ animal.name }}</h3>
                                 </div>
-                            </ng-container>
+                                <div class="card-info">
+                                    <!-- <p>Nome: nomeanimal</p> -->
+                                    <p>Tag: {{ animal.tag }}</p>
+                                    <p>Fazenda: {{ animal.farmId }}</p>
+                                </div>
+                            </div>
                         </ng-container>
-                    </div>
-                </section>
-            </div>
+                    </ng-container>
+                </div>
+            </section>
         </div>
     </div>
 </div>
