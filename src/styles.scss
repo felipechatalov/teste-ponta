@@ -11,10 +11,20 @@
     --cor-preto-principal: #020b1d;
 
 
+    
+
 
     div{
-        // border: solid 1px var(--cor-secundaria-fazenda);
         display: flex;
+
+        &.farm{
+            --cor-primaria: var(--cor-primaria-fazenda);
+            --cor-secundaria: var(--cor-secundaria-fazenda);
+        }
+        &.animal{
+            --cor-primaria: var(--cor-primaria-animal);
+            --cor-secundaria: var(--cor-secundaria-animal);
+        }
     }
 
     body{
@@ -42,11 +52,11 @@
         input{
             padding: 8px;
             margin-bottom: 12px; 
-            border: solid 1px var(--cor-primaria-animal);
+            border: solid 1px var(--cor-primaria);
             border-radius: 4px;
             outline: none;
             &:focus{
-                border: solid 1px var(--cor-secundaria-animal);
+                border: solid 1px var(--cor-secundaria);
             }
         }
     
@@ -60,17 +70,17 @@
 .g-button{
     width: 100%;
     padding: 8px;
-    border: solid 1px var(--cor-primaria-animal);
+    border: solid 1px var(--cor-primaria);
     border-radius: 4px;
-    background-color: var(--cor-primaria-animal);
+    background-color: var(--cor-primaria);
     color: white;
     font-weight: bold;
     cursor: pointer;
     max-height: 45px;
 
     &:hover{
-        background-color: var(--cor-secundaria-animal);
-        border: solid 1px var(--cor-secundaria-animal);
+        background-color: var(--cor-secundaria);
+        border: solid 1px var(--cor-secundaria);
     }
 }
 
@@ -230,7 +240,7 @@
     button{
         width: 15vw;
         height: 10vh;
-        background-color: var(--cor-primaria-animal);
+        background-color: var(--cor-primaria);
         outline: none;
         border: none;
         border-radius: 8px;

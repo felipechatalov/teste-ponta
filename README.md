@@ -1,59 +1,12 @@
-# Crud
+RESUMO:
+Esta aplicação se trata de um teste técnico para a empresa Ponta Agro, onde foi desenvolvido a área front-end para o consumo diversos endpoints de uma API. A temática do site se trata de um "CRUD" de animais e fazendas.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+ESPECIFICAÇÕES:
+Para o desenvolvimento foi utilizado da biblioteca Angular na versão 19.1.0 e Node na versão 20.11.1. Para compilar o projeto basta executar o comando 'ng build'. Já para rodar localmente basta executar 'ng serve' e entrar na url 'localhost:4200'
 
-## Development server
+UTILIZAÇÂO:
+Ao entrar no site, podemos escolher entre a sessão de animais ou de fazendas, onde cada uma possui operações em sua maioria semelhantes. Utilizando as operações, podemos cadastrar fazendas que possuem um nome e ID (gerado automáticamente pelo back-end), que podem possuir animais com nome, tag e ID (também gerado pelo back-end) vinculados a mesma fazenda. Também é possível fazer a procura de fazendas e animais por IDs uma vez que estão cadastrados no banco de dados.
 
-To start a local development server, run:
+OBSERVAÇÕES: 
+A pasta backend conta com 2 versões da aplicação back-end 'ponta.jar' e 'pontav2.jar', uma vez que a primeira versão 'ponta.jar' possuía um erro de relacionamento bidirecional, causando erro quando se buscava uma fazenda que possuía ao menos 1 animal vinculado.
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
